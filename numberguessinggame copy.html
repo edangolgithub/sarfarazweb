@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- bootstrap css cdn -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+  <!-- bootstrap js cdn -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+    <style>
+        .t {
+            text-align: center;
+            display: block;
+            height: 40px;
+            border-radius: 10px;
+            margin: 0 auto;
+        }
+
+        i {
+
+            color: #0069D9;
+            cursor: pointer;
+            border: outset 5px;
+
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div id="x"></div>
+    <div class="container m-5 text-center khelchas">
+        <h1 class="display-3 text-primary">गेम खेल्छस ?? </h1>
+        <button class="btn btn-success k">खेल्ने </button> <button class="btn btn-danger n">नखेल्ने </button>
+    </div>
+    <div class="container jumbotron text-center m m-5">
+        <h3 class="float-right hx"><i class="material-icons">
+                settings_applications
+            </i></h3>
+        <h1 class="text-success" id="z"></h1>
+        <h2 id="zz"></h2>
+        <div class="t">
+            <input type="text" id="num" placeholder="छिटो गेस गर्!!!" class=" t form-control w-50 ">
+
+        </div>
+
+        <button type="button" class="btn btn-primary m-2" id="play">गेस गर्! </button>
+        <button type="button" class="btn btn-primary m-2" id="replay" disabled>फेरी खेल्! ! </button>
+
+        <h3 id="ans"></h3>
+    </div>
+    <div class="container text-center nak">
+        <h1 class="text-primary">थुक्क!! दर्पोक मन्छे </h1>
+        <h2 class="text-warning">Bye Bye</h2>
+    </div>
+    <div class="container text-center suru jumbotron m-5">
+
+        <h1 class="text-primary">ल गेम सुरु गरम्!!</h1>
+        <p class="text-danger">
+            पहिला तैले मिनिमम र म्यक्सिमम नम्बर हाल्! अनि कति चान्स दिने पनि हाल्!! अनि गेम सुर गर्!!!
+        </p>
+        <div class="form-group">
+
+            <input type="text" id="min" class="form-control w-25 d-inline-block"
+                placeholder="'0' मात्रै हाल्न पाउछस्!!! ">
+            <input type="text" id="max" class="form-control w-25 d-inline-block" placeholder="म्यक्सिमम">
+            <input type="text" id="chance" class="form-control w-25 d-inline-block" placeholder="चान्स ">
+
+        </div>
+        <button type="submit" class="btn btn-primary start">सुरु गर!! </button>
+        <button type="submit" class="btn btn-warning dar">होईन डर लाग्यो!! </button>
+    </div>
+    <script>
+        $(function () {
+            var mem = 0;
+            var c = 0;
+            var max = 0;
+            $('.m').css("display", "none");
+            $('.nak').css("display", "none");
+            $('.suru').css("display", "none");
+            $('.k').click(function () {
+                $('.suru').css("display", "block");
+                $('.m').css("display", "none");
+                $('.nak').css("display", "none");
+                $('.khelchas').css("display", "none");
+            })
+            $('.n').click(function () {
+                $('.suru').css("display", "none");
+                $('.m').css("display", "none");
+                $('.nak').css("display", "block");
+                $('.khelchas').css("display", "none");
+            })
+            $('.dar').click(function () {
+                $('.khelchas').css("display", "block");
+                $('.m').css("display", "none");
+                $('.nak').css("display", "none");
+                $('.suru').css("display", "none");
+            })
+            $('.start').click(function () {
+                $('.khelchas').css("display", "none");
+                $('.m').css("display", "block");
+                $('.nak').css("display", "none");
+                $('.suru').css("display", "none");
+                init();
+            })
+            var re = false;
+            $('#replay').click(init);
+            function init() {
+                min = parseInt(document.getElementById("min").value);
+                max = parseInt(document.getElementById("max").value);
+
+                c = parseInt(document.getElementById("chance").value);
+                if (re) {
+                    c = prompt("tero min: " + min + " ani max " + max + "   aba bhan kati chance linchhas")
+                }
+
+
+                document.getElementById("chance").value = "";
+
+                if (isNaN(max)) {
+                    max = 100;
+                }
+                if (isNaN(min)) {
+                    min = 1;
+                }
+                if (isNaN(c)) {
+                    c = 3;
+
+                }
+                else {
+                    if (c > Math.ceil(Math.log2(max - min))) {
+                        alert("चान्स देको धेरै भो ");
+                        cc = prompt("कति चान्स दिने फेरी लेख्! ");
+                        c = parseInt(cc);
+                        if (isNaN(c)) {
+                            alert("के हालेको त्यो तलाई ३ चान्स मात्र दिन्छु ")
+                            c = 3;
+
+                        }
+                    }
+                }
+                mem = Math.floor(Math.random() * (max - min) + min);
+                // alert(mem);
+                document.getElementById("z").innerHTML = "मैले " + min + " देखी " + max + " भित्रो को नम्बर सोचेको छु " + "<br>तैले भन्न सक्छस त्यो नम्बर के हो ??"
+
+                document.getElementById("zz").innerHTML = "त सँग  " + c + " वोटा चान्स छ!!";
+                document.getElementById("play").disabled = false;
+                document.getElementById("ans").innerHTML = "";
+            }
+            function play() {
+                re = true;
+                document.getElementById("x").innerHTML = c;
+                var repl = "";
+                var correct = 0;
+
+                var num = document.getElementById("num").value;
+
+                if (num == "") {
+                    alert("खोइ त नम्बर हलेको ? ? बोरो ? ? ? ? ");
+                    return;
+                }
+                if (num != parseInt(num)) {
+                    alert("के हालेको मुर्ख मनिस ? ? ठिक सँग खेल्!!! ");
+                    return;
+                }
+                if (num > mem) {
+                    var reply = "धेरै भो !!! मुर्ख  मनुस्य ";
+                    reply += "<br> त सँग अब  " + (c - 1).toString() + " चान्स बकी छ ";
+                    document.getElementById("ans").innerHTML = reply;
+                    document.getElementById("ans").style.color = "red"
+                }
+                else if (num < mem) {
+                    var reply = "कम भो!!! मुर्ख  मनुस्य ";
+                    reply += "<br>त सँग अब " + (c - 1).toString() + " चान्स बकी छ ";
+                    document.getElementById("ans").innerHTML = reply;
+                    document.getElementById("ans").style.color = "red"
+                }
+                else {
+                    correct = 1;
+                    reply1 = "ठिक उत्तर दिइस र जितिस तर फेरी जित्न सक्दैनस ";
+                    document.getElementById("ans").innerHTML = reply1;
+                    document.getElementById("ans").style.color = "green"
+                    document.getElementById("replay").disabled = false;
+                    document.getElementById("play").disabled = true;
+
+                }
+                if ((c - 1) < 1 && correct != 1) {
+                    repl += "त हरिस्!! ठिक उत्तर   " + mem + "  हो ";
+                    repl += "<br> बुझिस मुर्ख मनुस्य!!!";
+                    document.getElementById("ans").innerHTML = repl;
+                    document.getElementById("ans").style.color = "red"
+                    document.getElementById("replay").disabled = false;
+                    document.getElementById("play").disabled = true;
+                    //  window.setTimeout(function(){window.location.reload()}, 3000);
+
+                }
+                correct = 0;
+                c--;
+            }
+            $("#play").click(play);
+            $('.hx').click(function () {
+                $('.suru').css("display", "block");
+                $('.m').css("display", "none");
+                $('.nak').css("display", "none");
+                $('.khelchas').css("display", "none");
+            })
+        })
+
+    </script>
+
+</body>
+
+</html>
