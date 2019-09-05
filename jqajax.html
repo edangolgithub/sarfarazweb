@@ -27,7 +27,7 @@
             $('button').click(function () {
                 var q = $('.t').val();
                 $.post("file.php", { abc: q }, function (safaraz) {
-                    alert(safaraz);
+                   $('h2').text(safaraz);
                 })
             })
 
