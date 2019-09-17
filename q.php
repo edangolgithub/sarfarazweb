@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <!-- jquery cdn -->
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+ integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+        <input type="text" id="t">
+        <button type="submit" class="btn btn-success">make double</button>
+    
+        <h1></h1>
+    
+    <script>
+        $(function () {
+            $('button').click(function () {
+                var value = $('#t').val();
+                
+                    $('h1').load("evenodd.php", { even: value }, function (k) { $('h1').text(k) });
+               
+            })
+        })
+    </script>
+</body>
+
+</html>
