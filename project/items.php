@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,12 +8,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- bootstrap css cdn -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     
-    <!-- bootstrap js cdn -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
+    <script>
+  /*   $(function(){
+        $('.vc').click(function (e) { 
+            e.preventDefault();
+            $.post("cart.php",
+  {
+    id: $('#data').val(),
+   
+  },
+  function(data, status){
+    alert("added " );
+  });
+        });
+    }) */
+    </script>
     <title>Document</title>
     <style>
         p {
@@ -133,8 +148,11 @@ if ($result->num_rows > 0) {
                 </div>
                 <div style="margin-left:40px;color:black;font-size:15px">-50%</div>
                 <div>
-                <a href="cart.php"><button  class="btn btn-primary btn-sm bt2" style="background-color: sandybrown;font-size: 15px;">ADD TO
+                <a class="vc" href="cart.php?id=<?php echo $row['itemid'] ?>"><button  class="btn btn-primary btn-sm bt2" style="background-color: sandybrown;font-size: 15px;">ADD TO
                                         CART</button>
+                                        <!-- <input type="hidden" id="data" value="<?php echo $row['itemid'] ?>">
+                                        <a class="vc" href="#"><button  class="btn btn-primary btn-sm bt2" style="background-color: sandybrown;font-size: 15px;">ADD TO
+                                        CART</button> -->
                 </a>
                 </div>
                 <div>
